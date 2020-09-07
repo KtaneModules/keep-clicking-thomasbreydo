@@ -2425,7 +2425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ModuleType: keepClicking
-  ModuleDisplayName: keepClicking
+  ModuleDisplayName: Keep Clicking
   RequiresTimerVisibility: 0
 --- !u!114 &114830067787882944
 MonoBehaviour:
