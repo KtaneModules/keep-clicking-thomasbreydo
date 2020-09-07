@@ -147,7 +147,7 @@ h2 {
 
 h3 {
     font-size: 1.17em;
-    margin: 1em 0 0;
+    padding: 1em 0 0;
 }
 
 h4 {
@@ -995,4 +995,21 @@ td, th {
     #pageTypeOption {
         display: none;
     }
+}
+
+
+#symbols-table {
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+
+#symbols-table > tbody > tr > td {
+    font-family: 'Arial Unicode MS';
+    font-size: 2em;
+}
+
+table tr.borderless > td {
+    border-top: none !important;
+    border-left: none !important;
 }

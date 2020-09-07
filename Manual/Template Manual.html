@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="section">
-        <div class="page page-bg-01">
+        <div class="page page-bg-04">
             <div class="page-header">
                 <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
                 <span class="page-header-section-title">Keep Clicking</span>
@@ -20,48 +20,71 @@
             <div class="page-content">
                 <img src="img/Component/Keep Clicking.svg" class="diagram">
                 <h2>On the Subject of Keep Clicking</h2>
-                <p class="flavour-text">Your flavor text should go here.</p>
-
-                <p>Here are templates for commonly used manual features. Make sure to always use closing tags (the ones with a <code>/</code> in them).</p>
-
-                <h3>Bullet Points (Unordered Lists)</h3>
-                <ul>
-                    <li>Bullet points should use the <code>&lt;ul&gt;&lt;/ul&gt;</code> and <code>&lt;li&gt;&lt;/li&gt;</code> tags.</li>
-                    <li>
-                        You can even have nested bullet points:
-                        <ul>
-                            <li>Indented</li>
-                            <li>Bullet Points</li>
-                        </ul>
-                    </li>
-                    <li>
-                        Or numbered lists:
-                        <ol>
-                            <li>Indented</li>
-                            <li>Bullet Points</li>
-                        </ol>
-                    </li>
-                </ul>
-
-                <h3>Numbered Lists (Ordered Lists)</h3>
+                <p class="flavour-text">"Oh, this is keypads!" No, not really. Good luck.</p>
+                <p>Each of the eight buttons will have a symbol. Clicking the button
+                    will change the symbol it displays. For every button, do the
+                    following:</p>
                 <ol>
-                    <li>Numbered lists should use the <code>&lt;ol&gt;&lt;/ol&gt;</code> and <code>&lt;li&gt;&lt;/li&gt;</code> tags.</li>
-                    <li>Nested lists work just like unordered lists (see above).</li>
+                    <li>Identify the type of the button as follows:</li>
+                    <ol type="a">
+                        <li>
+                            If the button is in the top row and there are more than 2
+                            batteries on the bomb, it is a pN button.
+                        </li>
+                        <li>
+                            Otherwise, if the button is in the middle row and there is
+                            a lit indicator with label SIG, it is an aK button.
+                        </li>
+                        <li>
+                            Otherwise, if there is a vowel in the serial number, it is
+                            a pN button.
+                        </li>
+                        <li>
+                            Otherwise, it is a gX button.
+                        </li>
+                    </ol>
+                    <li>Click the button until it displays any of the valid stop symbols
+                        for that button type:</li>
                 </ol>
-
-                <h3>Text</h3>
-                <p>Use paragraph tags (<code>&lt;p&gt;&lt;/p&gt;</code>) for text blocks. In addition, for text formatting, use:</p>
-                <ul>
-                    <li>
-                        <strong>Bold</strong>: <code>&lt;strong&gt;&lt;/strong&gt;</code> (HTML) or <code>font-weight: bold;</code> (CSS).
-                        <ul><li>Bold in table headers should be achieved through the use of the <code>&lt;th&gt;&lt;/th&gt;</code> tag.</li></ul>
-                    </li>
-                    <li><em>Underline</em>: <code>&lt;em&gt;&lt;/em&gt;</code> (HTML) or <code>text-decoration: underline;</code> (CSS).</li>
-                    <li>Line<br />Break: <code>&lt;br /&gt;</code> (HTML)</li>
-                </ul>
-                <p>For the most part, HTML versions of bolding and underlining is recommended. Note that italics are not used in vanilla manuals besides flavor text and references to appendices, and therefore is not included above. Also, here are some sample headings:</p>
-                <h3>Example Big Heading</h3>
-                <h4>Example Small Heading</h4>
+                <!-- <h3>Valid Stop Symbols for Each Button Type</h3> -->
+                <table id="symbols-table" class="center">
+                    <tbody>
+                    <tr class="borderless">
+                        <th>Type</th>
+                        <th colspan="7">Stop when Button Shows:</th>
+                    </tr>
+                    <tr>
+                        <th>aK Button:</th>
+                        <td>&#9811;</td>
+                        <td>&#9800;</td>
+                        <td>&#992;</td>
+                        <td>&#65428;</td>
+                        <td>&#963;</td>
+                        <td>&#1120;</td>
+                        <td>&#9802;</td>
+                    </tr>
+                    <tr>
+                        <th>pN Button:</th>
+                        <td>&#3223;</td>
+                        <td>&#9804;</td>
+                        <td>&#2921;</td>
+                        <td>&#1577;</td>
+                        <td>&#9803;</td>
+                        <td>&#9807;</td>
+                        <td>&#9806;</td>
+                    </tr>
+                    <tr>
+                        <th>gX Button:</th>
+                        <td>&#9805;</td>
+                        <td>&#9809;</td>
+                        <td>&#1521;</td>
+                        <td>&#9801;</td>
+                        <td>&#9810;</td>
+                        <td>&#2540;</td>
+                        <td>&#9808;</td>
+                    </tr>
+                </tbody>
+            </table>
             </div>
             <div class="page-footer relative-footer">Page 1 of 3</div>
         </div>
@@ -71,49 +94,7 @@
                 <span class="page-header-section-title">Keep Clicking</span>
             </div>
             <div class="page-content">
-                <h3>Example Tables</h3>
-                <table>
-                    <tr>
-                        <th>Part of table</th>
-                        <th>How to make</th>
-                    </tr>
-                    <tr>
-                        <th>Rows and Columns</th>
-                        <td>
-                            Use <code>&lt;tr&gt;&lt;/tr&gt;</code> for rows.
-                            Use <code>&lt;th&gt;&lt;/th&gt;</code> or <code>&lt;td&gt;&lt;/td&gt;</code> for columns within rows (see below).
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Headings (left column and top row, in most cases)</th>
-                        <td>Use <code>&lt;th&gt;&lt;/th&gt;</code></td>
-                    </tr>
-                    <tr>
-                        <th>Cells</th>
-                        <td>Use <code>&lt;td&gt;&lt;/td&gt;</code></td>
-                    </tr>
-                    <tr>
-                        <th rowspan="2">Merged Cells</th>
-                        <td>Use <code>rowspan="_"</code> for merging cells vertically.</td>
-                    </tr>
-                    <tr>
-                        <td>Use <code>colspan="_"</code> for merging cells horizontally.</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">Note that merged cells created in other rows are skipped in affected rows (see HTML for above row).</td>
-                    </tr>
-                </table>
-                <p>If the table contents are not wide enough, tables are centered by default due to the <code>table</code> rule of the first <code>&lt;style&gt;</code> block (see above code).</p>
-                <table class="center">
-                    <tr>
-                        <th>Cell 1</th>
-                        <td>Cell 2</td>
-                    </tr>
-                    <tr>
-                        <th>Cell 3</th>
-                        <td>Cell 4</td>
-                    </tr>
-                </table>
+                
 
                 <h3>Images</h3>
                 <p>Use the <code>&lt;img src="_" /&gt;</code> tag for images. Make sure to put your images into the <code class="notcode">/img/[Keep Clicking]/</code> folder. Adjust the width with CSS, using <code>width: _%;</code> (recommended) or <code>width: _px;</code>. Example:</p>

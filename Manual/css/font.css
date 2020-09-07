@@ -5,3 +5,8 @@
   font-weight: 400;
   src: local('Special Elite'), local('SpecialElite-Regular'), url(../font/SpecialElite.ttf);
 }
+
+@font-face {
+  font-family: 'Arial Unicode MS';
+  src: url(../font/arial-unicode-ms.ttf);
+}
