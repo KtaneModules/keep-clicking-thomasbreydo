@@ -47,7 +47,6 @@ public class keepClicking : MonoBehaviour
 
 	private ButtonType[] buttonTypes = new ButtonType[8];
 	private ButtonType[] symbolTypes = new ButtonType[8];
-
 	private static Symbol[] stopSymbols_aK =
 	{
 		new Symbol("\u2653", FontStyle.Bold, ButtonType.aK),
@@ -125,7 +124,7 @@ public class keepClicking : MonoBehaviour
 		for (int i = 0; i < buttons.Length; i++)
 		{
 			buttonTypes[i] = getTypeOfButtonAtIndex(i);
-			assignSymbolNotStopForButtonAtIndex(i);
+			assignNewSymbolNotStopForButtonAtIndex(i);
 		}
 		Debug.LogFormat("[Keep Clicking #{0}] Button types (left-to-right, "
 		              + "top-to-bottom): {1}", _moduleId, 
@@ -234,18 +233,42 @@ public class keepClicking : MonoBehaviour
 	{
 		if (Random.Range(0, 5) == 4)  // 25%
 		{
-			assignSymbolNotStopForButtonAtIndex(index);
+			assignNewSymbolNotStopForButtonAtIndex(index);
 		}
 		else  // 75%
 		{
-			assignSymbolToTextMeshAtIndex(index,
-                                 randomStopSymbolForType(buttonTypes[index]));
+			assignNewSymbolStopForButtonAtIndex(index);
 		}
 	}
 
-	void assignSymbolNotStopForButtonAtIndex (int index)
+	void assignNewSymbolNotStopForButtonAtIndex (int index)
 	{
-		assignSymbolToTextMeshAtIndex(index, randomSymbolNotStopSymbolForIndex(index));
+		Symbol newSymbol;
+		string oldSymbolText = buttonTextMeshes[index].text;
+		while (true)
+		{
+			newSymbol = randomSymbolNotStopSymbolForIndex(index);
+			if (newSymbol.text != oldSymbolText)
+			{
+				break;
+			}
+		}
+		assignSymbolToTextMeshAtIndex(index, newSymbol);
+	}
+	
+	void assignNewSymbolStopForButtonAtIndex (int index)
+	{
+		Symbol newSymbol;
+		string oldSymbolText = buttonTextMeshes[index].text;
+		while (true)
+		{
+			newSymbol = randomStopSymbolForType(buttonTypes[index]);
+			if (newSymbol.text != oldSymbolText)
+			{
+				break;
+			}
+		}
+		assignSymbolToTextMeshAtIndex(index, newSymbol);
 	}
 
 	void handlePassIfPassed ()
