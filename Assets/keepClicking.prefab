@@ -253,6 +253,7 @@ GameObject:
   - component: {fileID: 114270624928329670}
   - component: {fileID: 114818830585058256}
   - component: {fileID: 114638229564226976}
+  - component: {fileID: 114426627072815712}
   m_Layer: 0
   m_Name: keepClicking
   m_TagString: Untagged
@@ -1766,7 +1767,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1389717257616420}
-  m_Text: "\u264D"
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 0.05
   m_LineSpacing: 1
@@ -1774,7 +1775,7 @@ TextMesh:
   m_Alignment: 1
   m_TabSize: 4
   m_FontSize: 100
-  m_FontStyle: 1
+  m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: f2a2da3ed9cc444249703c6b85b56db0, type: 3}
   m_Color:
@@ -1787,7 +1788,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1451604569295790}
-  m_Text: "\u09EC"
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 0.05
   m_LineSpacing: 1
@@ -1795,7 +1796,7 @@ TextMesh:
   m_Alignment: 1
   m_TabSize: 4
   m_FontSize: 100
-  m_FontStyle: 1
+  m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: f2a2da3ed9cc444249703c6b85b56db0, type: 3}
   m_Color:
@@ -1808,7 +1809,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1551074963878576}
-  m_Text: "\u2650"
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 0.05
   m_LineSpacing: 1
@@ -1816,7 +1817,7 @@ TextMesh:
   m_Alignment: 1
   m_TabSize: 4
   m_FontSize: 100
-  m_FontStyle: 1
+  m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: f2a2da3ed9cc444249703c6b85b56db0, type: 3}
   m_Color:
@@ -1829,7 +1830,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1021678900015666}
-  m_Text: "\u0460"
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 0.05
   m_LineSpacing: 1
@@ -1850,7 +1851,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1788541406879608}
-  m_Text: "\u2652"
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 0.05
   m_LineSpacing: 1
@@ -1858,7 +1859,7 @@ TextMesh:
   m_Alignment: 1
   m_TabSize: 4
   m_FontSize: 100
-  m_FontStyle: 1
+  m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: f2a2da3ed9cc444249703c6b85b56db0, type: 3}
   m_Color:
@@ -1871,7 +1872,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1780280614579206}
-  m_Text: "\u03E0"
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 0.05
   m_LineSpacing: 1
@@ -1892,7 +1893,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1855871526466862}
-  m_Text: "\u05F1"
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 0.05
   m_LineSpacing: 1
@@ -1913,7 +1914,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1743535663571380}
-  m_Text: "\u0629"
+  m_Text: 
   m_OffsetZ: 0
   m_CharacterSize: 0.05
   m_LineSpacing: 1
@@ -2131,6 +2132,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShaderNames:
   - KT/Mobile/DiffuseTint
+--- !u!114 &114426627072815712
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1526963849762046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e48bfadf883694459983da4f0cd456af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bomb: {fileID: 114270624928329670}
+  Module: {fileID: 114818830585058256}
+  Audio: {fileID: 114892691873016760}
+  buttons:
+  - {fileID: 114558856578026018}
+  - {fileID: 114952132136400532}
+  - {fileID: 114830067787882944}
+  - {fileID: 114454103478966388}
+  - {fileID: 114883799391329038}
+  - {fileID: 114751343175443254}
+  - {fileID: 114631994723504160}
+  - {fileID: 114866476013162744}
+  buttonTextMeshes:
+  - {fileID: 102639780095874444}
+  - {fileID: 102587695703487214}
+  - {fileID: 102615516145854376}
+  - {fileID: 102989838880193590}
+  - {fileID: 102856985654279792}
+  - {fileID: 102782852839161782}
+  - {fileID: 102961344016220966}
+  - {fileID: 102524399373379812}
 --- !u!114 &114454103478966388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2391,8 +2424,8 @@ MonoBehaviour:
   m_Script: {fileID: -119419473, guid: 45b809be76fd7a3468b6f517bced6f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ModuleType: clickOrSkip
-  ModuleDisplayName: Click or Skip
+  ModuleType: keepClicking
+  ModuleDisplayName: keepClicking
   RequiresTimerVisibility: 0
 --- !u!114 &114830067787882944
 MonoBehaviour:
