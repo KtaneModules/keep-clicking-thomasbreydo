@@ -14,14 +14,14 @@ MonoBehaviour:
   id: keepClicking
   title: Keep Clicking
   author: Thomas Breydo
-  description: 'Each of the eight buttons will have a symbol. Clicking a button changes
-    its symbol. Click the every button until it displays any of the valid stop symbols
-    for that button type.
+  description: 'Each of the six buttons will have a symbol. Clicking a button changes
+    its symbol. Submit after clicking every button until it displays any of the valid
+    stop symbols for that button type.
 
 
     Author: Thomas Breydo
 
     Module ID: keepClicking'
-  version: 1.3
+  version: 1.5
   outputFolder: build
-  previewImage: {fileID: 2800000, guid: fd3743477324f405f826f9114a795578, type: 3}
+  previewImage: {fileID: 2800000, guid: 7d5120f42927f47dabb68778efd5e880, type: 3}

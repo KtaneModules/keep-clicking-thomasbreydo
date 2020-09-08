@@ -14,6 +14,7 @@ public class keepClicking : MonoBehaviour
 	public KMAudio Audio;
 	public KMSelectable[] buttons;
 	public TextMesh[] buttonTextMeshes;
+	public KMSelectable submitButton;
 
 	private static int _moduleIdCounter = 1;
 	private int _moduleId = 0;
@@ -45,8 +46,8 @@ public class keepClicking : MonoBehaviour
 		public ButtonType stopSymbolForButtonTypeX { get; set; }
 	}
 
-	private ButtonType[] buttonTypes = new ButtonType[8];
-	private ButtonType[] symbolTypes = new ButtonType[8];
+	private ButtonType[] buttonTypes = new ButtonType[6];
+	private ButtonType[] symbolTypes = new ButtonType[6];
 	private static Symbol[] stopSymbols_aK =
 	{
 		new Symbol("\u2653", FontStyle.Bold, ButtonType.aK),
@@ -88,6 +89,9 @@ public class keepClicking : MonoBehaviour
 			{ButtonType.gX, stopSymbols_gX}
 		};
 
+	private Dictionary <int, Symbol[]>  symbolsForButtonIndex =
+		new Dictionary <int, Symbol[]>();
+
 	// Run once, while loading screen shows
 	void Start () 
 	{
@@ -118,6 +122,11 @@ public class keepClicking : MonoBehaviour
 				return false;
 			};
 		}
+		submitButton.OnInteract += delegate ()
+		{
+			handleClickSubmit();
+			return false;
+		};
 	}
 
 	void GenerateModule () {
@@ -143,7 +152,7 @@ public class keepClicking : MonoBehaviour
 		{
 			return ButtonType.pN;
 		}
-		if (isInMiddleRow(index) && _SIGisLit)
+		if (isInBottomRow(index) && _SIGisLit)
 		{
 			return ButtonType.aK;
 		}
@@ -156,12 +165,12 @@ public class keepClicking : MonoBehaviour
 
 	bool isInTopRow (int index)
 	{
-		return (index == 0 || index == 1);
+		return (index <= 2);
 	}
 
-	bool isInMiddleRow (int index)
+	bool isInBottomRow (int index)
 	{
-		return (index == 2 || index == 3 || index == 4);
+		return (index >= 3);
 	}
 
 	Symbol randomSymbolNotStopSymbolForIndex (int index)
@@ -216,28 +225,43 @@ public class keepClicking : MonoBehaviour
 		return stopSymbolsForButtonType[type][Random.Range(0, 7)];
 	}
 
+	private void handleClickSubmit ()
+	{
+		Audio.PlayGameSoundAtTransform(
+			KMSoundOverride.SoundEffect.ButtonPress, submitButton.transform);
+		submitButton.AddInteractionPunch();
+		handlePassOrStrike();
+	}
+
 	void handleClickButtonAtIndex (int index)
 	{
 		Audio.PlayGameSoundAtTransform(
 			KMSoundOverride.SoundEffect.ButtonPress, buttons[index].transform);
 		buttons[index].AddInteractionPunch();
-		if (buttonAtIndexIsDone(index))
-		{
-			Module.HandleStrike();
-		}
 		setNewSymbolForButtonAtIndex(index);
-		handlePassIfPassed();
 	}
 
 	void setNewSymbolForButtonAtIndex (int index)
 	{
-		if (Random.Range(0, 5) == 4)  // 25%
+		if (Random.Range(0, 2) == 0)  // appx. 50% that the button will be done
 		{
 			assignNewSymbolNotStopForButtonAtIndex(index);
 		}
-		else  // 75%
+		else
 		{
 			assignNewSymbolStopForButtonAtIndex(index);
+		}
+	}
+
+	void assignNewRandomSymbolToButtonAtIndex (int index)
+	{
+		if (Random.Range(0, 3) == 0)
+		{
+			assignNewSymbolStopForButtonAtIndex(index);
+		}
+		else
+		{
+			assignNewSymbolNotStopForButtonAtIndex(index);
 		}
 	}
 
@@ -271,18 +295,22 @@ public class keepClicking : MonoBehaviour
 		assignSymbolToTextMeshAtIndex(index, newSymbol);
 	}
 
-	void handlePassIfPassed ()
+	void handlePassOrStrike ()
 	{
 		for (int i = 0; i < buttons.Length; i++)
 		{
-			if (!buttonAtIndexIsDone(i)) return;
+			if (buttonAtIndexIsNotDone(i))
+			{
+				Module.HandleStrike();
+				return;	
+			}
 		}
 		Module.HandlePass();
 	}
 
-	bool buttonAtIndexIsDone (int index)
+	bool buttonAtIndexIsNotDone (int index)
 	{
-		return symbolTypes[index] == buttonTypes[index];
+		return symbolTypes[index] != buttonTypes[index];
 	}
 
 	void assignSymbolToTextMeshAtIndex (int index, Symbol symbol)
