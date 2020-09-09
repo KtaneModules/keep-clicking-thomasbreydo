@@ -22,6 +22,6 @@ MonoBehaviour:
     Author: Thomas Breydo
 
     Module ID: keepClicking'
-  version: 1.5
+  version: 1.6
   outputFolder: build
   previewImage: {fileID: 2800000, guid: 7d5120f42927f47dabb68778efd5e880, type: 3}

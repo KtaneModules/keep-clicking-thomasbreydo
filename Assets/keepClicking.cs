@@ -48,6 +48,7 @@ public class keepClicking : MonoBehaviour
 
 	private ButtonType[] buttonTypes = new ButtonType[6];
 	private ButtonType[] symbolTypes = new ButtonType[6];
+	private int[] symbolIndices = {0, 0, 0, 0, 0, 0};
 	private static Symbol[] stopSymbols_aK =
 	{
 		new Symbol("\u2653", FontStyle.Bold, ButtonType.aK),
@@ -89,7 +90,7 @@ public class keepClicking : MonoBehaviour
 			{ButtonType.gX, stopSymbols_gX}
 		};
 
-	private Dictionary <int, Symbol[]>  symbolsForButtonIndex =
+	private Dictionary <int, Symbol[]>  symbolsForButtonAtIndex =
 		new Dictionary <int, Symbol[]>();
 
 	// Run once, while loading screen shows
@@ -133,7 +134,8 @@ public class keepClicking : MonoBehaviour
 		for (int i = 0; i < buttons.Length; i++)
 		{
 			buttonTypes[i] = getTypeOfButtonAtIndex(i);
-			assignNewSymbolNotStopForButtonAtIndex(i);
+			symbolsForButtonAtIndex.Add(i, randomListOf6SymbolsForButtonAtIndex(i));
+			cycleNextSymbolForButtonAtIndex(i);
 		}
 		Debug.LogFormat("[Keep Clicking #{0}] Button types (left-to-right, "
 		              + "top-to-bottom): {1}", _moduleId, 
@@ -173,9 +175,33 @@ public class keepClicking : MonoBehaviour
 		return (index >= 3);
 	}
 
+	Symbol[] randomListOf6SymbolsForButtonAtIndex (int index)
+	{
+		Symbol[] symbols = new Symbol[6];
+		int indexOfStopSymbol = Random.Range(0, symbols.Length);
+		symbols[indexOfStopSymbol] = randomStopSymbolForType(buttonTypes[index]);
+		HashSet<string> symbolTextsAlreadyOnThisButton = new HashSet<string>();
+		Symbol newSymbol;
+		for (int i = 0; i < symbols.Length; i++)
+		{
+			if (i == indexOfStopSymbol) continue;
+			while (true)
+			{
+				newSymbol = randomSymbolNotStopSymbolForIndex(index);
+				if (!symbolTextsAlreadyOnThisButton.Contains(newSymbol.text))
+				{
+					symbols[i] = newSymbol;
+					symbolTextsAlreadyOnThisButton.Add(newSymbol.text);
+					break;
+				}
+			}
+		}
+		return symbols;
+	}
+
 	Symbol randomSymbolNotStopSymbolForIndex (int index)
 	{
-		return randomSymbolNotStopSymbolForType(getTypeOfButtonAtIndex(index));
+		return randomSymbolNotStopSymbolForType(buttonTypes[index]);
 	}
 
 	// symbol that isn't a valid stop symbol for this button
@@ -238,61 +264,21 @@ public class keepClicking : MonoBehaviour
 		Audio.PlayGameSoundAtTransform(
 			KMSoundOverride.SoundEffect.ButtonPress, buttons[index].transform);
 		buttons[index].AddInteractionPunch();
-		setNewSymbolForButtonAtIndex(index);
+		cycleNextSymbolForButtonAtIndex(index);
 	}
 
-	void setNewSymbolForButtonAtIndex (int index)
+	void cycleNextSymbolForButtonAtIndex (int index)
 	{
-		if (Random.Range(0, 2) == 0)  // appx. 50% that the button will be done
-		{
-			assignNewSymbolNotStopForButtonAtIndex(index);
-		}
-		else
-		{
-			assignNewSymbolStopForButtonAtIndex(index);
-		}
+		assignSymbolToTextMeshAtIndex(
+			index,
+			symbolsForButtonAtIndex[index][symbolIndices[index]]);
+		incrementSymbolIndicesForButtonAtIndex(index);
 	}
 
-	void assignNewRandomSymbolToButtonAtIndex (int index)
+	void incrementSymbolIndicesForButtonAtIndex (int index)
 	{
-		if (Random.Range(0, 3) == 0)
-		{
-			assignNewSymbolStopForButtonAtIndex(index);
-		}
-		else
-		{
-			assignNewSymbolNotStopForButtonAtIndex(index);
-		}
-	}
-
-	void assignNewSymbolNotStopForButtonAtIndex (int index)
-	{
-		Symbol newSymbol;
-		string oldSymbolText = buttonTextMeshes[index].text;
-		while (true)
-		{
-			newSymbol = randomSymbolNotStopSymbolForIndex(index);
-			if (newSymbol.text != oldSymbolText)
-			{
-				break;
-			}
-		}
-		assignSymbolToTextMeshAtIndex(index, newSymbol);
-	}
-	
-	void assignNewSymbolStopForButtonAtIndex (int index)
-	{
-		Symbol newSymbol;
-		string oldSymbolText = buttonTextMeshes[index].text;
-		while (true)
-		{
-			newSymbol = randomStopSymbolForType(buttonTypes[index]);
-			if (newSymbol.text != oldSymbolText)
-			{
-				break;
-			}
-		}
-		assignSymbolToTextMeshAtIndex(index, newSymbol);
+		int old = symbolIndices[index];
+		symbolIndices[index] = (old + 1) % symbolsForButtonAtIndex[0].Length;
 	}
 
 	void handlePassOrStrike ()
