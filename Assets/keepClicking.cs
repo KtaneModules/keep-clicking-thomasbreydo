@@ -19,6 +19,7 @@ public class keepClicking : MonoBehaviour
 	private static int _moduleIdCounter = 1;
 	private int _moduleId = 0;
 	private bool _SIGisLit;
+	private bool _litIndicatorEndingWithR;
 	private int _nBatteries;
 	private static string vowels = "aeiouAEIOU";
 	private bool _serialNumHasVowel;
@@ -99,11 +100,16 @@ public class keepClicking : MonoBehaviour
 		_moduleId = _moduleIdCounter++;
 		_nBatteries = Bomb.GetBatteryCount();
 		_SIGisLit = Bomb.IsIndicatorOn("SIG");
-		_serialNumHasVowel = serialNumHasVowel();
+		_litIndicatorEndingWithR = LitIndicatorEndingWithR();
+		_serialNumHasVowel = SerialNumHasVowel();
 		GenerateModule();
 	}
 
-	private bool serialNumHasVowel()
+	private bool LitIndicatorEndingWithR ()
+	{
+		return (Bomb.IsIndicatorOn("CAR") || Bomb.IsIndicatorOn("CLR"));
+	}
+	private bool SerialNumHasVowel()
 	{
 		foreach (char c in Bomb.GetSerialNumber())
 		{
@@ -119,13 +125,13 @@ public class keepClicking : MonoBehaviour
 			int j = i;
 			buttons[i].OnInteract += delegate () 
 			{
-				handleClickButtonAtIndex(j);
+				HandleClickButtonAtIndex(j);
 				return false;
 			};
 		}
 		submitButton.OnInteract += delegate ()
 		{
-			handleClickSubmit();
+			HandleClickSubmit();
 			return false;
 		};
 	}
@@ -133,9 +139,9 @@ public class keepClicking : MonoBehaviour
 	void GenerateModule () {
 		for (int i = 0; i < buttons.Length; i++)
 		{
-			buttonTypes[i] = getTypeOfButtonAtIndex(i);
-			symbolsForButtonAtIndex.Add(i, randomListOf6SymbolsForButtonAtIndex(i));
-			cycleNextSymbolForButtonAtIndex(i);
+			buttonTypes[i] = GetTypeOfButtonAtIndex(i);
+			symbolsForButtonAtIndex.Add(i, RandomListOf6SymbolsForButtonAtIndex(i));
+			CycleNextSymbolForButtonAtIndex(i);
 		}
 		Debug.LogFormat("[Keep Clicking #{0}] Button types (left-to-right, "
 		              + "top-to-bottom): {1}", _moduleId, 
@@ -149,37 +155,41 @@ public class keepClicking : MonoBehaviour
 		}
 	}
 
-	ButtonType getTypeOfButtonAtIndex (int index) {
-		if (isInTopRow(index) && _nBatteries > 2)
+	ButtonType GetTypeOfButtonAtIndex (int index) {
+		if (IsMiddleButton(index) && _nBatteries > 2)
 		{
 			return ButtonType.pN;
 		}
-		if (isInBottomRow(index) && _SIGisLit)
+		if (IsLeftButton(index) && _SIGisLit)
 		{
 			return ButtonType.aK;
 		}
+		if (_litIndicatorEndingWithR)
+		{
+			return ButtonType.gX;
+		}
 		if (_serialNumHasVowel)
 		{
-			return ButtonType.pN;
+			return ButtonType.aK;
 		}
 		return ButtonType.gX;
 	}
 
-	bool isInTopRow (int index)
+	bool IsMiddleButton (int index)
 	{
-		return (index <= 2);
+		return (index == 1);
 	}
 
-	bool isInBottomRow (int index)
+	bool IsLeftButton (int index)
 	{
-		return (index >= 3);
+		return (index == 2);
 	}
 
-	Symbol[] randomListOf6SymbolsForButtonAtIndex (int index)
+	Symbol[] RandomListOf6SymbolsForButtonAtIndex (int index)
 	{
 		Symbol[] symbols = new Symbol[6];
 		int indexOfStopSymbol = Random.Range(0, symbols.Length);
-		symbols[indexOfStopSymbol] = randomStopSymbolForType(buttonTypes[index]);
+		symbols[indexOfStopSymbol] = RandomStopSymbolForType(buttonTypes[index]);
 		Debug.LogFormat(
 			"[Keep Clicking #{0}] Stop symbol for button at index {1} is {2}",
 			_moduleId,
@@ -193,7 +203,7 @@ public class keepClicking : MonoBehaviour
 			if (i == indexOfStopSymbol) continue;
 			while (true)
 			{
-				newSymbol = randomSymbolNotStopSymbolForIndex(index);
+				newSymbol = RandomSymbolNotStopSymbolForIndex(index);
 				if (!symbolTextsAlreadyOnThisButton.Contains(newSymbol.text))
 				{
 					symbols[i] = newSymbol;
@@ -205,27 +215,27 @@ public class keepClicking : MonoBehaviour
 		return symbols;
 	}
 
-	Symbol randomSymbolNotStopSymbolForIndex (int index)
+	Symbol RandomSymbolNotStopSymbolForIndex (int index)
 	{
-		return randomSymbolNotStopSymbolForType(buttonTypes[index]);
+		return RandomSymbolNotStopSymbolForType(buttonTypes[index]);
 	}
 
 	// symbol that isn't a valid stop symbol for this button
-	Symbol randomSymbolNotStopSymbolForType (ButtonType type)
+	Symbol RandomSymbolNotStopSymbolForType (ButtonType type)
 	{
 		switch (type)
 		{
 			case ButtonType.aK:
-				return randomSymbolNotStopSymbolForType_aK();
+				return RandomSymbolNotStopSymbolForType_aK();
 			case ButtonType.pN:
-				return randomSymbolNotStopSymbolForType_pN();
+				return RandomSymbolNotStopSymbolForType_pN();
 			case ButtonType.gX:
-				return randomSymbolNotStopSymbolForType_gX();
+				return RandomSymbolNotStopSymbolForType_gX();
 		}
 		throw new System.ArgumentException("Invalid button type", "type");
 	}
 	
-	Symbol randomSymbolNotStopSymbolForType_aK ()
+	Symbol RandomSymbolNotStopSymbolForType_aK ()
 	{
 		int symbolIndex = Random.Range(0, 14);
 		if (symbolIndex < 7) {
@@ -234,7 +244,7 @@ public class keepClicking : MonoBehaviour
 		return stopSymbols_gX[symbolIndex - 7];
 	}
 	
-	Symbol randomSymbolNotStopSymbolForType_pN ()
+	Symbol RandomSymbolNotStopSymbolForType_pN ()
 	{
 		int symbolIndex = Random.Range(0, 14);
 		if (symbolIndex < 7) {
@@ -243,7 +253,7 @@ public class keepClicking : MonoBehaviour
 		return stopSymbols_gX[symbolIndex - 7];
 	}
 	
-	Symbol randomSymbolNotStopSymbolForType_gX ()
+	Symbol RandomSymbolNotStopSymbolForType_gX ()
 	{
 		int symbolIndex = Random.Range(0, 14);
 		if (symbolIndex < 7) {
@@ -252,46 +262,46 @@ public class keepClicking : MonoBehaviour
 		return stopSymbols_pN[symbolIndex - 7];
 	}
 
-	Symbol randomStopSymbolForType (ButtonType type)
+	Symbol RandomStopSymbolForType (ButtonType type)
 	{
 		return stopSymbolsForButtonType[type][Random.Range(0, 7)];
 	}
 
-	private void handleClickSubmit ()
+	private void HandleClickSubmit ()
 	{
 		Audio.PlayGameSoundAtTransform(
 			KMSoundOverride.SoundEffect.ButtonPress, submitButton.transform);
 		submitButton.AddInteractionPunch();
-		handlePassOrStrike();
+		HandlePassOrStrike();
 	}
 
-	void handleClickButtonAtIndex (int index)
+	void HandleClickButtonAtIndex (int index)
 	{
 		Audio.PlayGameSoundAtTransform(
 			KMSoundOverride.SoundEffect.ButtonPress, buttons[index].transform);
 		buttons[index].AddInteractionPunch();
-		cycleNextSymbolForButtonAtIndex(index);
+		CycleNextSymbolForButtonAtIndex(index);
 	}
 
-	void cycleNextSymbolForButtonAtIndex (int index)
+	void CycleNextSymbolForButtonAtIndex (int index)
 	{
-		assignSymbolToTextMeshAtIndex(
+		AssignSymbolToTextMeshAtIndex(
 			index,
 			symbolsForButtonAtIndex[index][symbolIndices[index]]);
-		incrementSymbolIndicesForButtonAtIndex(index);
+		IncrementSymbolIndicesForButtonAtIndex(index);
 	}
 
-	void incrementSymbolIndicesForButtonAtIndex (int index)
+	void IncrementSymbolIndicesForButtonAtIndex (int index)
 	{
 		int old = symbolIndices[index];
 		symbolIndices[index] = (old + 1) % symbolsForButtonAtIndex[0].Length;
 	}
 
-	void handlePassOrStrike ()
+	void HandlePassOrStrike ()
 	{
 		for (int i = 0; i < buttons.Length; i++)
 		{
-			if (buttonAtIndexIsNotDone(i))
+			if (ButtonAtIndexIsNotDone(i))
 			{
 				Module.HandleStrike();
 				return;	
@@ -300,18 +310,18 @@ public class keepClicking : MonoBehaviour
 		Module.HandlePass();
 	}
 
-	bool buttonAtIndexIsNotDone (int index)
+	bool ButtonAtIndexIsNotDone (int index)
 	{
 		return symbolTypes[index] != buttonTypes[index];
 	}
 
-	void assignSymbolToTextMeshAtIndex (int index, Symbol symbol)
+	void AssignSymbolToTextMeshAtIndex (int index, Symbol symbol)
 	{
-		_setTextMeshToSymbol(ref buttonTextMeshes[index], symbol);
+		_SetTextMeshToSymbol(ref buttonTextMeshes[index], symbol);
 		symbolTypes[index] = symbol.stopSymbolForButtonTypeX;
 	}
 
-	private void _setTextMeshToSymbol (ref TextMesh mesh, Symbol symbol)
+	private void _SetTextMeshToSymbol (ref TextMesh mesh, Symbol symbol)
 	{
 		mesh.text = symbol.text;
 		mesh.fontStyle = symbol.fontStyle;
