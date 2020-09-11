@@ -46,9 +46,9 @@ public class keepClicking : MonoBehaviour
 		public ButtonType stopSymbolForButtonTypeX { get; set; }
 	}
 
-	private ButtonType[] buttonTypes = new ButtonType[6];
-	private ButtonType[] symbolTypes = new ButtonType[6];
-	private int[] symbolIndices = {0, 0, 0, 0, 0, 0};
+	private ButtonType[] buttonTypes = new ButtonType[3];
+	private ButtonType[] symbolTypes = new ButtonType[3];
+	private int[] symbolIndices = {0, 0, 0};
 	private static Symbol[] stopSymbols_aK =
 	{
 		new Symbol("\u2653", FontStyle.Bold, ButtonType.aK),
@@ -180,6 +180,12 @@ public class keepClicking : MonoBehaviour
 		Symbol[] symbols = new Symbol[6];
 		int indexOfStopSymbol = Random.Range(0, symbols.Length);
 		symbols[indexOfStopSymbol] = randomStopSymbolForType(buttonTypes[index]);
+		Debug.LogFormat(
+			"[Keep Clicking #{0}] Stop symbol for button at index {1} is {2}",
+			_moduleId,
+			index,
+			indexOfStopSymbol
+		);
 		HashSet<string> symbolTextsAlreadyOnThisButton = new HashSet<string>();
 		Symbol newSymbol;
 		for (int i = 0; i < symbols.Length; i++)
