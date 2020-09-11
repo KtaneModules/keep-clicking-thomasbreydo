@@ -7,12 +7,12 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   viewBox="0.0 0.0 348.0 348.0"
-   fill="none"
-   version="1.1"
-   id="svg62"
+   inkscape:version="1.0 (4035a4f, 2020-05-01)"
    sodipodi:docname="Keep Clicking.svg"
-   inkscape:version="1.0 (4035a4f, 2020-05-01)">
+   id="svg62"
+   version="1.1"
+   fill="none"
+   viewBox="0.0 0.0 348.0 348.0">
   <metadata
      id="metadata68">
     <rdf:RDF>
@@ -27,103 +27,82 @@
   <defs
      id="defs66" />
   <sodipodi:namedview
-     inkscape:document-rotation="0"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1440"
-     inkscape:window-height="878"
-     id="namedview64"
-     showgrid="false"
-     inkscape:zoom="1.9252874"
-     inkscape:cx="174"
-     inkscape:cy="174"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:current-layer="svg62"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg62" />
+     inkscape:window-y="0"
+     inkscape:window-x="0"
+     inkscape:cy="174"
+     inkscape:cx="174"
+     inkscape:zoom="1.9252874"
+     showgrid="false"
+     id="namedview64"
+     inkscape:window-height="878"
+     inkscape:window-width="1440"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     inkscape:document-rotation="0" />
   <path
-     d="M5.079 5.776h336.913v337.67H5.08z"
-     stroke-width="2"
+     id="path58"
      stroke="#000"
-     id="path58" />
+     stroke-width="2"
+     d="M5.079 5.776h336.913v337.67H5.08z" />
   <path
-     d="M282.734 40.554c0-8.376 6.966-15.165 15.56-15.165 4.126 0 8.084 1.597 11.001 4.441 2.918 2.844 4.558 6.702 4.558 10.724 0 8.376-6.966 15.165-15.56 15.165-8.593 0-15.559-6.79-15.559-15.165z"
-     stroke-width="2"
+     id="path60"
      stroke="#000"
-     id="path60" />
+     stroke-width="2"
+     d="M282.734 40.554c0-8.376 6.966-15.165 15.56-15.165 4.126 0 8.084 1.597 11.001 4.441 2.918 2.844 4.558 6.702 4.558 10.724 0 8.376-6.966 15.165-15.56 15.165-8.593 0-15.559-6.79-15.559-15.165z" />
   <rect
-     style="opacity:1;fill:#000000;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     y="168.97357"
+     x="141"
+     height="72.136429"
+     width="72.136429"
      id="rect70"
-     width="72.136429"
-     height="72.136429"
-     x="141.43178"
-     y="141.43178" />
-  <rect
-     y="241.43178"
-     x="141.43178"
-     height="72.136429"
-     width="72.136429"
-     id="rect70-1"
      style="opacity:1;fill:#000000;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   <rect
-     y="141.43178"
-     x="41.431786"
-     height="72.136429"
-     width="72.136429"
+     style="opacity:1;fill:#000000;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
      id="rect70-6"
-     style="opacity:1;fill:#000000;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+     width="72.136429"
+     height="72.136429"
+     x="41"
+     y="168.97357" />
   <rect
-     style="opacity:1;fill:#000000;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-     id="rect70-6-9"
-     width="195.67462"
+     y="91"
+     x="80.568214"
      height="60.674618"
-     x="42.162689"
-     y="42.162689" />
+     width="195.67462"
+     id="rect70-6-9"
+     style="opacity:1;fill:#000000;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   <rect
      style="opacity:1;fill:#000000;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-     id="rect70-6-5"
-     width="72.136429"
-     height="72.136429"
-     x="41.431786"
-     y="241.43178" />
-  <rect
-     y="141.43178"
-     x="241.43178"
-     height="72.136429"
-     width="72.136429"
      id="rect70-6-5-0"
-     style="opacity:1;fill:#000000;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-  <rect
-     y="241.43178"
-     x="241.43178"
-     height="72.136429"
      width="72.136429"
-     id="rect70-6-5-1"
-     style="opacity:1;fill:#000000;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+     height="72.136429"
+     x="241"
+     y="168.97357" />
+  <text
+     id="text981"
+     y="76.352242"
+     x="56.614925"
+     style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none"
+     xml:space="preserve"><tspan
+       y="76.352242"
+       x="56.614925"
+       id="tspan979"
+       sodipodi:role="line" /></text>
   <text
      xml:space="preserve"
      style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none"
-     x="56.614925"
-     y="76.352242"
-     id="text981"><tspan
+     x="98.288338"
+     y="135.44669"
+     id="text28"><tspan
        sodipodi:role="line"
-       id="tspan979"
-       x="56.614925"
-       y="76.352242" /></text>
-  <text
-     id="text28"
-     y="86.609375"
-     x="59.882812"
-     style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none"
-     xml:space="preserve"><tspan
-       y="86.609375"
-       x="59.882812"
        id="tspan26"
-       sodipodi:role="line">SUBMIT</tspan></text>
+       x="98.288338"
+       y="135.44669">SUBMIT</tspan></text>
 </svg>
