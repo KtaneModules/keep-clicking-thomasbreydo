@@ -182,7 +182,7 @@ public class keepClicking : MonoBehaviour
 
 	bool IsLeftButton (int index)
 	{
-		return (index == 2);
+		return (index == 0);
 	}
 
 	Symbol[] RandomListOf6SymbolsForButtonAtIndex (int index)
